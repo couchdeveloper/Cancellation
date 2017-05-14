@@ -185,7 +185,7 @@ The function `f` will be called when the cancellation token has been cancelled.
 
 #### An example might help for what we can use these combinators:
 
-Implement a function `&&`, which returns a new token which semantically defines of AND-ing two cancellation tokens.
+Implement a function `&&`, which returns a new token which semantically defines AND-ing two cancellation tokens.
 
 An implementation might look as follows:
 
