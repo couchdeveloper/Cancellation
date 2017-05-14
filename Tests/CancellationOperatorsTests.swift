@@ -34,6 +34,29 @@ class CancellationOperatorsTests: XCTestCase {
         self.waitForExpectations(timeout: 1, handler: nil)
     }
 
+    func testOred2CancellationToken10() {
+        let expect = self.expectation(description: "finished")
+        let cr = CancellationRequest()
+        func g(cr: CancellationRequest) {
+            let cr2 = CancellationRequest()
+            func f(ct: CancellationTokenType) {
+                DispatchQueue.global().async {
+                    ct.onCancel {
+                        expect.fulfill()
+                    }
+                    for _ in 1...100 {
+                        usleep(1000)
+                    }
+                }
+            }
+            f(ct: cr.token || cr2.token)
+        }
+        g(cr: cr)
+        cr.cancel()
+        self.waitForExpectations(timeout: 1, handler: nil)
+    }
+
+
 
     func testOred2CancellationToken1() {
         let expect = self.expectation(description: "handler shoulde be called")
