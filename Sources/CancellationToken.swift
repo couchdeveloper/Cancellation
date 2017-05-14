@@ -1,7 +1,8 @@
 //
 //  CancellationToken.swift
 //
-//  Copyright © 2017 Andreas Grosam. All rights reserved.
+//  Copyright © 2017 Andreas Grosam.
+//  Licensed under the Apache License, Version 2.0.
 //
 
 import Dispatch
