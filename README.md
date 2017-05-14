@@ -183,23 +183,22 @@ The function `f` will be called when the cancellation token has been cancelled.
 `flatMap` returns a token that will be completed with the eventual value of the returned token from the transform function `f`.
 
 
-An example might help for what we can use these combinators:
+#### An example might help for what we can use these combinators:
 
-1. Implement function `||`, which returns a new token which semantically defines the result of OR-ing two cancellation tokens.
+Implement a function `&&`, which returns a new token which semantically defines of AND-ing two cancellation tokens.
 
 An implementation might look as follows:
 
 ```Swift
-public func || (left: CancellationTokenType, right: CancellationTokenType)
+public func && (left: CancellationTokenType, right: CancellationTokenType)
     -> CancellationTokenType
 {
-    let returnedToken = CancellationToken()
-    left.onComplete { cancelled in
-        returnedToken.complete(cancel: cancelled)
+    return left.flatMap {
+        //  executes only when left has been cancelled.
+        right.map {  
+          // executes only when right has been cancelled.
+          true // completes the returned token with true (cancelled)
+        }
     }
-    right.onComplete { cancelled in
-        returnedToken.complete(cancel: cancelled)
-    }
-    return returnedToken
 }
 ```
