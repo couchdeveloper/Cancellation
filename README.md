@@ -37,11 +37,11 @@ The implementation of the above function `task` must of course monitor the state
 
 Basically, there are two ways to achieve this:
 
- 1. Polling
+1. Polling
 
  The cancellation token has a property `isCancelled`. It becomes `true` when the client requested a cancellation. The task must periodically query the property and then abort the operation if `isCancelled` returns `true`.
 
- 2. Registering a _Cancellation Handler_
+2. Registering a _Cancellation Handler_
 
  A Cancellation Token can register one or more "handlers". Actually, there are a few ways to register a handler, `onCancel` is the most straight forward one. The handler will be called when the client has requested a cancellation. This can be utilized to cancel the underlying task.
 
