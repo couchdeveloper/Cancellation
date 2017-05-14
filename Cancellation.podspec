@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   spec.name = 'Cancellation'
-  spec.version = '0.1.0'
-  spec.summary = 'A small Swift library which enables cancellation handling for tasks'
+  spec.version = '0.2.0'
+  spec.summary = 'Handle Cancellation for Asynchronous Tasks in Swift'
   spec.license = 'Apache License, Version 2.0'
   spec.homepage = 'https://github.com/couchdeveloper/Cancellation'
   spec.authors = { 'Andreas Grosam' => 'couchdeveloper@gmail.com' }

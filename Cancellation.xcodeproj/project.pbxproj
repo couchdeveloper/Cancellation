@@ -39,7 +39,6 @@
 		A152D00C1EA7DA7C00683592 /* CancellationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellationError.swift; sourceTree = "<group>"; };
 		A152D00D1EA7DA7C00683592 /* CancellationOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellationOperators.swift; sourceTree = "<group>"; };
 		A152D00E1EA7DA7C00683592 /* CancellationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellationRequest.swift; sourceTree = "<group>"; };
-		A152D00F1EA7DA7C00683592 /* CancellationSequenceTypeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellationSequenceTypeExtension.swift; sourceTree = "<group>"; };
 		A152D0111EA7DA7C00683592 /* CancellationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellationToken.swift; sourceTree = "<group>"; };
 		A152D0121EA7DA7C00683592 /* CancellationTokenNone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellationTokenNone.swift; sourceTree = "<group>"; };
 		A152D0131EA7DA7C00683592 /* CancellationTokenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellationTokenType.swift; sourceTree = "<group>"; };
@@ -98,7 +97,6 @@
 				A152D0111EA7DA7C00683592 /* CancellationToken.swift */,
 				A152D0121EA7DA7C00683592 /* CancellationTokenNone.swift */,
 				A152D00D1EA7DA7C00683592 /* CancellationOperators.swift */,
-				A152D00F1EA7DA7C00683592 /* CancellationSequenceTypeExtension.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
