@@ -149,21 +149,6 @@ class CancellationTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
 
-
-    func testOnCompleteShouldNotRun() {
-        let cr = CancellationRequest()
-        let ct = cr.token
-        let expect1 = self.expectation(description: "cancellation handler should be called")
-        ct.onComplete { cancelled in
-            XCTFail()
-        }
-        DispatchQueue.global().asyncAfter(deadline: .now() + 0.2) {
-            expect1.fulfill()
-        }
-        waitForExpectations(timeout: 1, handler: nil)
-    }
-
-
     func testOnCancelShouldRun1() {
         let cr = CancellationRequest()
         let ct = cr.token
