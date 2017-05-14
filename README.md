@@ -133,7 +133,7 @@ Then use it as follows:
 
 ```Swift
 self.cancellationRequest = CancellationRequest() // invalidate any previous obsolete cancellation handlers
-URLSession.shared.data(form: url, cancellationToken: self.cancellationRequest.token) { data, response, error in
+URLSession.shared.data(from: url, cancellationToken: self.cancellationRequest.token) { data, response, error in
     // handle (data, response, error)
     ...
 }
