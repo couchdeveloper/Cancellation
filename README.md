@@ -1,6 +1,6 @@
 # Cancellation
 
-[![Build Status](https://travis-ci.org/couchdeveloper/Cancellation.svg?branch=master)](https://travis-ci.org/couchdeveloper/Cancellation) [![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0) [![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/) ![Platforms MacOS | iOS | tvOS | watchOS](https://img.shields.io/badge/Platforms-OS%20X%20%7C%20iOS%20%7C%20tvOS%20%7C%20watchOS-brightgreen.svg) [![Carthage Compatible](https://img.shields.io/badge/Carthage-Compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![CocoaPods](https://img.shields.io/badge/CocoaPods-available-370301.svg)](https://cocoapods.org/?q=cdCancellation)
+[![Build Status](https://travis-ci.org/couchdeveloper/Cancellation.svg?branch=master)](https://travis-ci.org/couchdeveloper/Cancellation) [![GitHub license](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0) [![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/) ![Platforms MacOS | iOS | tvOS | watchOS](https://img.shields.io/badge/Platforms-OS%20X%20%7C%20iOS%20%7C%20tvOS%20%7C%20watchOS-brightgreen.svg) [![Carthage Compatible](https://img.shields.io/badge/Carthage-Compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![CocoaPods](https://img.shields.io/badge/CocoaPods-available-370301.svg)](https://cocoapods.org/?q=Cancellation)
 
 
 ----------------------------------------
@@ -41,23 +41,23 @@ Basically, there are two ways to achieve this:
 
  The cancellation token has a property `isCancelled`. It becomes `true` when the client requested a cancellation. The task must periodically query the property and then abort the operation if `isCancelled` returns `true`.
 
- 1. Registering a _Cancellation Handler_
+ 2. Registering a _Cancellation Handler_
 
  A Cancellation Token can register one or more "handlers". Actually, there are a few ways to register a handler, `onCancel` is the most straight forward one. The handler will be called when the client has requested a cancellation. This can be utilized to cancel the underlying task.
 
- A handy `URLSession` extension is a perfect example to illustrate the concept:
-  ```Swift
-  extension URLSession {
-      func data(from url: URL, cancellationToken: CancellationTokenType, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-          let task = self.dataTask(with: url) { data, response, error in
-              completion(data, response, error)
-          }
-          cancellationToken.onCancel { [weak task] in
-              task?.cancel()
-          }
-          task.resume()
-      }   
-  }
+A handy `URLSession` extension is a perfect example to illustrate the second approach number:
+```Swift
+extension URLSession {
+  func data(from url: URL, cancellationToken: CancellationTokenType, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+    let task = self.dataTask(with: url) { data, response, error in
+      completion(data, response, error)
+
+    cancellationToken.onCancel { [weak task] in
+      task?.cancel()
+    }
+    task.resume()
+  }   
+}
 ```
 
  We should notice, that in order to not keeping a reference to the data task _longer_ than necessary, it is important, that the cancellation handler _weakly_ captures the data task reference.
