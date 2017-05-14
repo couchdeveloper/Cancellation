@@ -18,11 +18,11 @@ public func || (left: CancellationTokenType, right: CancellationTokenType)
     -> CancellationTokenType 
 {
     let returnedToken = CancellationToken()
-    left.onCancel {
-        returnedToken.complete(cancel: true)
+    left.onComplete { cancelled in
+        returnedToken.complete(cancel: cancelled)
     }
     right.onComplete { cancelled in
-        returnedToken.complete(cancel: true)
+        returnedToken.complete(cancel: cancelled)
     }
     return returnedToken
 }
