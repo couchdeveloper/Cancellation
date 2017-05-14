@@ -1,0 +1,16 @@
+language: objective-c
+
+branches:
+ only:
+ - master
+
+xcode_project: Cancellation.xcodeproj
+xcode_scheme: Cancellation
+osx_image: xcode8.3
+
+script:
+- xcrun xcodebuild test -project Cancellation.xcodeproj -scheme Cancellation -destination 'arch=x86_64' | xcpretty
+- xcrun xcodebuild test -project Cancellation.xcodeproj -scheme Cancellation -destination 'platform=iOS Simulator,name=iPhone 6' | xcpretty
+- xcrun xcodebuild test -project Cancellation.xcodeproj -scheme Cancellation -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3' | xcpretty
+- xcrun xcodebuild test -project Cancellation.xcodeproj -scheme Cancellation -destination 'platform=tvOS Simulator,name=Apple TV 1080p' | xcpretty
+- xcrun xcodebuild build -quiet -project Cancellation.xcodeproj -scheme Cancellation -destination 'platform=watchOS Simulator,name=Apple Watch - 38mm' | xcpretty
