@@ -12,6 +12,29 @@ import Dispatch
 
 class CancellationOperatorsTests: XCTestCase {
 
+    func testOred2CancellationToken() {
+        let expect = self.expectation(description: "finished")
+        func g() {
+            let cr1 = CancellationRequest()
+            let cr2 = CancellationRequest()
+            func f(ct: CancellationTokenType) {
+                DispatchQueue.global().async {
+                    ct.onCancel {
+                        XCTFail("should not be called")
+                    }
+                    for _ in 1...100 {
+                        usleep(1000)
+                    }
+                    expect.fulfill()
+                }
+            }
+            f(ct: cr1.token || cr2.token)
+        }
+        g()
+        self.waitForExpectations(timeout: 1, handler: nil)
+    }
+
+
     func testOred2CancellationToken1() {
         let expect = self.expectation(description: "handler shoulde be called")
         let cr1 = CancellationRequest()
@@ -78,6 +101,29 @@ class CancellationOperatorsTests: XCTestCase {
         cr3.cancel()
         self.waitForExpectations(timeout: 1, handler: nil)
         XCTAssertTrue(ct.isCancelled)
+    }
+
+
+    func testAnded2CancellationToken() {
+        let expect = self.expectation(description: "finished")
+        func g() {
+            let cr1 = CancellationRequest()
+            let cr2 = CancellationRequest()
+            func f(ct: CancellationTokenType) {
+                DispatchQueue.global().async {
+                    ct.onCancel {
+                        XCTFail("should not be called")
+                    }
+                    for _ in 1...100 {
+                        usleep(1000)
+                    }
+                    expect.fulfill()
+                }
+            }
+            f(ct: cr1.token && cr2.token)
+        }
+        g()
+        self.waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testAnded2CancellationToken1() {
