@@ -146,3 +146,60 @@ override func viewWillDisappear(_ animated: Bool) {
     self.cancellationRequest.cancel()
 }    
 ```
+
+### A Cancellation Token is a Future
+
+A cancellation token has two states:
+
+ - undetermined
+ - completed(value: Bool)
+
+ That is, its "value" is either "undetermined" or it is a Boolean whose value is either `true` or `false`.
+
+A cancellation token starts out to be in state "undetermined". Eventually it will be completed with a boolean value, where `true` means "cancelled" and `false` means, well  "not cancelled". It may sound strange that a cancellation token can have a state "not cancelled", but thinking further, it makes absolute sense:
+
+Suppose the client did not request a cancellation when it ceases to exist, and its cancellation request value will be deallocated as well. At this point, the cancellation request will complete its cancellation token with value `false` indicating that at this time on there can never be a cancellation request anymore. When the token will be completed, it resumes registered handlers while skipping those which explicitly registered to execute only when the state equals "cancelled". Other handlers, for example those registered with `onComplete` will now execute.
+
+So, once a token is completed, all registered handlers will eventually be deallocated, which in turn will release resources, including those captured in the handlers itself.
+
+Once a token has been completed, it can never be changed anymore. We can still register handlers, but they will either run asynchronously or be skipped immediately, depending on the state and the type of the register function.
+
+
+
+### Using Combinator Functions
+
+A _Combinator_ is an instance function which returns a new instance of the same type. Combinators can be used to build more complex systems.
+
+The _Cancellation Token_ defines a few combinators:
+
+- `func map(f: @escaping () -> (Bool)) -> CancellationToken` and
+- `func flatMap(f: @escaping () -> (CancellationTokenType)) -> CancellationToken`
+
+
+The function `f` will be called when the cancellation token has been cancelled.
+
+`map` returns a token that will be completed with the return value of the transform function `f`. That is, if `f` returns `false`, the returned token will be completed with "not cancelled". Otherwise, it will be completed with "cancelled".
+
+`flatMap` returns a token that will be completed with the eventual value of the returned token from the transform function `f`.
+
+
+An example might help for what we can use these combinators:
+
+1. Implement function `||`, which returns a new token which semantically defines the result of OR-ing two cancellation tokens.
+
+An implementation might look as follows:
+
+```Swift
+public func || (left: CancellationTokenType, right: CancellationTokenType)
+    -> CancellationTokenType
+{
+    let returnedToken = CancellationToken()
+    left.onComplete { cancelled in
+        returnedToken.complete(cancel: cancelled)
+    }
+    right.onComplete { cancelled in
+        returnedToken.complete(cancel: cancelled)
+    }
+    return returnedToken
+}
+```
