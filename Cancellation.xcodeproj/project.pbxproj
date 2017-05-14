@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A150BDBC1EB50E8100F38909 /* CancellationErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152D0211EA7DACF00683592 /* CancellationErrorTests.swift */; };
-		A150BDC01EB50EE000F38909 /* Cancellation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A152CFF11EA7D86A00683592 /* Cancellation.framework */; };
 		A150BDC31EB5102800F38909 /* CancellationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152D0241EA7DACF00683592 /* CancellationTests.swift */; };
 		A152D0161EA7DA7C00683592 /* Cancelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152D00B1EA7DA7C00683592 /* Cancelable.swift */; };
 		A152D0171EA7DA7C00683592 /* CancellationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152D00C1EA7DA7C00683592 /* CancellationError.swift */; };
@@ -18,6 +17,7 @@
 		A152D01E1EA7DA7C00683592 /* CancellationTokenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152D0131EA7DA7C00683592 /* CancellationTokenType.swift */; };
 		A1C847171EC7616C001B91B0 /* CancellationOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152D00D1EA7DA7C00683592 /* CancellationOperators.swift */; };
 		A1C847181EC76382001B91B0 /* CancellationOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152D0221EA7DACF00683592 /* CancellationOperatorsTests.swift */; };
+		A1FD3BEC1EC8BA780061B347 /* Cancellation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A152CFF11EA7D86A00683592 /* Cancellation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A150BDC01EB50EE000F38909 /* Cancellation.framework in Frameworks */,
+				A1FD3BEC1EC8BA780061B347 /* Cancellation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +412,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ag.com.CancellationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -428,7 +428,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ag.com.CancellationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
