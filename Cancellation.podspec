@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'Cancellation'
-  spec.version = '0.3.0'
+  spec.version = '0.4.0'
   spec.summary = 'Cancellation Handling for Asynchronous Tasks in Swift'
   spec.license = 'Apache License, Version 2.0'
   spec.homepage = 'https://github.com/couchdeveloper/Cancellation'
