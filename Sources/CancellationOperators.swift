@@ -21,7 +21,7 @@ public func || (left: CancellationTokenType, right: CancellationTokenType)
     left.onCancel {
         returnedToken.complete(cancel: true)
     }
-    right.onCancel { cancelled in
+    right.onCancel {
         returnedToken.complete(cancel: true)
     }
     return returnedToken
