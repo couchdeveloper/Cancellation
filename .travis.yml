@@ -6,7 +6,7 @@ branches:
 
 xcode_project: Cancellation.xcodeproj
 xcode_scheme: Cancellation
-osx_image: xcode8.3
+osx_image: xcode9
 
 script:
 - xcrun xcodebuild test -project Cancellation.xcodeproj -scheme Cancellation -destination 'arch=x86_64' | xcpretty
