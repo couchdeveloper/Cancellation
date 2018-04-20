@@ -59,7 +59,7 @@ class Operation<T>: Cancelable {
             self.completion = completion
             self.this = self
             self.timer = DispatchSource.makeTimerSource(queue: self.syncQueue)
-            self.timer.scheduleOneshot(deadline: .now() + self.duration)
+            self.timer.schedule(deadline: .now() + self.duration)
             self.timer.setEventHandler { [weak self] in
                 guard let this = self, this.result == nil else {
                     // This will happen, when the operation has been cancelled and then finished
