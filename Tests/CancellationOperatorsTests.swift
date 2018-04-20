@@ -31,7 +31,7 @@ class CancellationOperatorsTests: XCTestCase {
             f(ct: cr1.token || cr2.token)
         }
         g()
-        self.waitForExpectations(timeout: 1, handler: nil)
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
 
     func testOred2CancellationToken10() {
@@ -146,7 +146,7 @@ class CancellationOperatorsTests: XCTestCase {
             f(ct: cr1.token && cr2.token)
         }
         g()
-        self.waitForExpectations(timeout: 1, handler: nil)
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
 
     func testAnded2CancellationToken1() {
@@ -166,7 +166,7 @@ class CancellationOperatorsTests: XCTestCase {
         }
         f(ct: cr1.token && cr2.token)
         cr1.cancel()
-        self.waitForExpectations(timeout: 1, handler: nil)
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
 
     func testAnded2CancellationToken1Polling() {
@@ -184,7 +184,7 @@ class CancellationOperatorsTests: XCTestCase {
         }
         f(ct: cr1.token && cr2.token)
         cr1.cancel()
-        self.waitForExpectations(timeout: 1, handler: nil)
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
 
     func testAnded2CancellationToken2() {
@@ -204,7 +204,7 @@ class CancellationOperatorsTests: XCTestCase {
         }
         f(ct: cr1.token && cr2.token)
         cr2.cancel()
-        self.waitForExpectations(timeout: 1, handler: nil)
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
 
     func testAnded2CancellationToken12() {
@@ -224,7 +224,7 @@ class CancellationOperatorsTests: XCTestCase {
         f(ct: cr1.token && cr2.token)
         cr1.cancel()
         cr2.cancel()
-        self.waitForExpectations(timeout: 1, handler: nil)
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
 
     func testAnded2CancellationToken12Polling() {
@@ -266,7 +266,7 @@ class CancellationOperatorsTests: XCTestCase {
         }
         f(ct: cr1.token && cr2.token && cr3.token)
         cr1.cancel()
-        self.waitForExpectations(timeout: 1, handler: nil)
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
 
     func testAnded3CancellationToken2() {
@@ -287,7 +287,7 @@ class CancellationOperatorsTests: XCTestCase {
         }
         f(ct: cr1.token && cr2.token && cr3.token)
         cr2.cancel()
-        self.waitForExpectations(timeout: 1, handler: nil)
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
 
     func testAnded3CancellationToken3() {
@@ -308,7 +308,7 @@ class CancellationOperatorsTests: XCTestCase {
         }
         f(ct: cr1.token && cr2.token && cr3.token)
         cr3.cancel()
-        self.waitForExpectations(timeout: 1, handler: nil)
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
 
     func testAnded3CancellationToken123() {
