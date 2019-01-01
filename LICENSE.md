@@ -1,7 +1,7 @@
 If not otherwise noted, the content in this package is licensed
 under the following license:
 
-Copyright 2017 Andreas Grosam
+Copyright 2019 Andreas Grosam
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
