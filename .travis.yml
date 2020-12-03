@@ -1,16 +1,13 @@
-language: objective-c
+language: swift
 
-branches:
- only:
- - master
-
-xcode_project: Cancellation.xcodeproj
+xcode_workspace: Cancellation.xcworkspace
 xcode_scheme: Cancellation
-osx_image: xcode10.1
+osx_image: xcode12.2
 
 script:
-- xcrun xcodebuild test -project Cancellation.xcodeproj -scheme Cancellation -destination 'arch=x86_64' | xcpretty
-- xcrun xcodebuild test -project Cancellation.xcodeproj -scheme Cancellation -destination 'platform=iOS Simulator,name=iPhone 6' | xcpretty
-- xcrun xcodebuild test -project Cancellation.xcodeproj -scheme Cancellation -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3' | xcpretty
-- xcrun xcodebuild test -project Cancellation.xcodeproj -scheme Cancellation -destination 'platform=tvOS Simulator,name=Apple TV' | xcpretty
-- xcrun xcodebuild build -quiet -project Cancellation.xcodeproj -scheme Cancellation -destination 'platform=watchOS Simulator,name=Apple Watch - 38mm' | xcpretty
+- set -o pipefail
+- xcrun xcodebuild test -workspace Cancellation.xcworkspace -scheme Cancellation -destination 'arch=x86_64' | xcpretty
+- xcrun xcodebuild test -workspace Cancellation.xcworkspace -scheme Cancellation -destination 'platform=iOS Simulator,name=iPhone 12' | xcpretty
+- xcrun xcodebuild test -workspace Cancellation.xcworkspace -scheme Cancellation -destination 'platform=iOS Simulator,name=iPhone 5s,OS=10.3.1' | xcpretty
+- xcrun xcodebuild test -workspace Cancellation.xcworkspace -scheme Cancellation -destination 'platform=tvOS Simulator,name=Apple TV' | xcpretty
+- xcrun xcodebuild build -workspace Cancellation.xcworkspace -scheme Cancellation -destination 'platform=watchOS Simulator,name=Apple Watch - 38mm' | xcpretty

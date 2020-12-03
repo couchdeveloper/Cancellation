@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A134A54B2579448500CF1CA6 /* UnfairLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134A54A2579448500CF1CA6 /* UnfairLock.swift */; };
+		A134A5592579452E00CF1CA6 /* UnsafeMutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134A5582579452E00CF1CA6 /* UnsafeMutex.swift */; };
 		A150BDBC1EB50E8100F38909 /* CancellationErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152D0211EA7DACF00683592 /* CancellationErrorTests.swift */; };
 		A150BDC31EB5102800F38909 /* CancellationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152D0241EA7DACF00683592 /* CancellationTests.swift */; };
 		A152D0161EA7DA7C00683592 /* Cancelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A152D00B1EA7DA7C00683592 /* Cancelable.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A134A54A2579448500CF1CA6 /* UnfairLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfairLock.swift; sourceTree = "<group>"; };
+		A134A5582579452E00CF1CA6 /* UnsafeMutex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeMutex.swift; sourceTree = "<group>"; };
 		A152CFF11EA7D86A00683592 /* Cancellation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cancellation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A152CFF51EA7D86A00683592 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A152CFFA1EA7D86A00683592 /* CancellationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CancellationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +104,8 @@
 				A152D0111EA7DA7C00683592 /* CancellationToken.swift */,
 				A152D0121EA7DA7C00683592 /* CancellationTokenNone.swift */,
 				A152D00D1EA7DA7C00683592 /* CancellationOperators.swift */,
+				A134A54A2579448500CF1CA6 /* UnfairLock.swift */,
+				A134A5582579452E00CF1CA6 /* UnsafeMutex.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -177,11 +183,12 @@
 				TargetAttributes = {
 					A152CFF01EA7D86A00683592 = {
 						CreatedOnToolsVersion = 8.3.1;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1220;
 						ProvisioningStyle = Manual;
 					};
 					A152CFF91EA7D86A00683592 = {
 						CreatedOnToolsVersion = 8.3.1;
+						LastSwiftMigration = 1220;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -191,6 +198,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = A152CFE71EA7D86A00683592;
@@ -227,9 +235,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A152D0161EA7DA7C00683592 /* Cancelable.swift in Sources */,
+				A134A54B2579448500CF1CA6 /* UnfairLock.swift in Sources */,
 				A152D0171EA7DA7C00683592 /* CancellationError.swift in Sources */,
 				A152D0191EA7DA7C00683592 /* CancellationRequest.swift in Sources */,
 				A1AF592F20892D1100A0BE73 /* CancellationOperators.swift in Sources */,
+				A134A5592579452E00CF1CA6 /* UnsafeMutex.swift in Sources */,
 				A152D01E1EA7DA7C00683592 /* CancellationTokenType.swift in Sources */,
 				A152D01D1EA7DA7C00683592 /* CancellationTokenNone.swift in Sources */,
 				A152D01C1EA7DA7C00683592 /* CancellationToken.swift in Sources */,
@@ -307,7 +317,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -317,10 +327,10 @@
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
 			};
 			name = Debug;
 		};
@@ -368,7 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = "";
@@ -376,10 +386,10 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
 			};
 			name = Release;
 		};
@@ -402,12 +412,14 @@
 					"@loader_path/Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MARKETING_VERSION = 0.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ag.com.Cancellation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -430,10 +442,12 @@
 					"@loader_path/Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MARKETING_VERSION = 0.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ag.com.Cancellation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -452,9 +466,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = ag.com.CancellationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -473,9 +489,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = ag.com.CancellationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

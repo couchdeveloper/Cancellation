@@ -1,12 +1,9 @@
 //
-//  CancellationTokenNone.swift
-//
-//  Copyright © 2017 Andreas Grosam.
+//  Copyright © 2020 Andreas Grosam.
 //  Licensed under the Apache License, Version 2.0.
 //
 
 import Dispatch
-
 
 /// A special Cancellation Token implementation which represents a token which
 /// cannot be cancelled.
@@ -30,7 +27,7 @@ public struct CancellationTokenNone: CancellationTokenType {
     /// - parameter f: The closure which defines the event handler to be executed
     /// when `self` is completed.
     public func onComplete(f: @escaping (Bool) -> ()) {
-        DispatchQueue.global().async {
+        cancellationQueue.async {
             f(false)
         }
     }
@@ -38,7 +35,6 @@ public struct CancellationTokenNone: CancellationTokenType {
     public func map(f: @escaping () -> (Bool)) -> CancellationTokenNone { return CancellationTokenNone() }
 
     public func flatMap(f: @escaping () -> (CancellationTokenType)) -> CancellationTokenNone { return CancellationTokenNone() }
-
 
     /// A NoOp function.
     ///

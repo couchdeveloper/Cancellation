@@ -1,7 +1,5 @@
 //
-//  CancellationTokenType.swift
-//
-//  Copyright © 2017 Andreas Grosam.
+//  Copyright © 2020 Andreas Grosam.
 //  Licensed under the Apache License, Version 2.0.
 //
 
@@ -80,7 +78,6 @@ public protocol CancellationTokenType {
 
 }
 
-
 extension CancellationTokenType {
 
     /// Register a closure which will be called when `self` has been completed with
@@ -105,7 +102,7 @@ extension CancellationTokenType {
     /// cancelable should be submitted.
     /// - parameter cancelable: The value whose underlying task should be cancelled.
     public func register(cancelable: Cancelable) {
-        register(cancelable: cancelable, queue: DispatchQueue.global())
+        register(cancelable: cancelable, queue: cancellationQueue)
     }
 
     /// Registers a `Cancelable` whose function `cancel()` will be called on the

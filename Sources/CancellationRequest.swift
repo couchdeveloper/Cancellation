@@ -1,10 +1,7 @@
 //
-//  CancellationRequest.swift
-//
-//  Copyright © 2017 Andreas Grosam.
+//  Copyright © 2020 Andreas Grosam.
 //  Licensed under the Apache License, Version 2.0.
 //
-
 
 /// A `CancellationRequest` is a means to let a client signal one or more tasks 
 /// that it is no more interested in the result and that the tasks should stop
@@ -46,7 +43,6 @@ public final class CancellationRequest {
     }
 
 }
-
 
 extension CancellationRequest: CustomDebugStringConvertible {
 
