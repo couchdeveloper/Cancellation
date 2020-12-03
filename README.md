@@ -17,7 +17,7 @@ self.cancellationRequest = CancellationRequest()
 ```
 which then can be used later to perform a "cancellation request":
 ```Swift
-self.cancellationRequest = cancel()
+self.cancellationRequest.cancel()
 ```
 
 Now, in order associate a cancelable asynchronous task with this cancelation request, the cancellation request has one _Cancellation Token_. This cancellation token can be used to register one or more cancellation handlers or it can be queried about its state, that is, obtain a boolean value which indicates that the client has requested a cancellation. The cancellation request's cancellation token is passed as a parameter to a function that starts its underlying asynchronous task:
