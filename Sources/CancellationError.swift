@@ -1,12 +1,7 @@
 //
-//  CancellationError.swift
-//
-//  Copyright © 2017 Andreas Grosam.
+//  Copyright © 2020 Andreas Grosam.
 //  Licensed under the Apache License, Version 2.0.
 //
-
-
-
 
 /// Defines a "Cancellation Error". 
 /// This will be used when a task or operation has been cancelled.
@@ -14,7 +9,6 @@ public struct CancellationError: Error, Equatable, CustomStringConvertible {
     
     /// The message `self` has been initialized with.
     public var message: String
-
     
     /// Initializes a `CancellationError` with a given message string.
     ///
@@ -31,7 +25,6 @@ public struct CancellationError: Error, Equatable, CustomStringConvertible {
     }
 }
 
-
 /// Equality operator for `CancellationError`.
 /// 
 /// The operands are considered _equal_ if their `message` properties compare equal.
@@ -42,7 +35,6 @@ public struct CancellationError: Error, Equatable, CustomStringConvertible {
 public func ==(lhs: CancellationError, rhs: CancellationError) -> Bool {
     return lhs.message == rhs.message
 }
-
 
 ///  Equality operator for `CancellationError` and `ErrorType`.
 /// 
@@ -57,7 +49,6 @@ public func ==(lhs: CancellationError, rhs: Error) -> Bool {
         return false
     }
 }
-
 
 /// Equality operator for `ErrorType` and `CancellationError`.
 ///

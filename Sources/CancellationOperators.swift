@@ -1,10 +1,7 @@
 //
-//  CancellationOperators.swift
-//
-//  Copyright © 2017 Andreas Grosam.
+//  Copyright © 2020 Andreas Grosam.
 //  Licensed under the Apache License, Version 2.0.
 //
-
 
 /// Returns a new cancellation token which will be completed when either of the
 /// two operands have been completed. If either operand becomes cancelled, the
@@ -26,8 +23,6 @@ public func || (left: CancellationTokenType, right: CancellationTokenType)
     }
     return returnedToken
 }
-
-
 
 /// Returns a new cancellation token which will be completed when both of the
 /// two operands have been completed. Both operands must be cancelled in order

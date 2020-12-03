@@ -1,10 +1,7 @@
 //
-//  Cancelable.swift
-//
-//  Copyright © 2017 Andreas Grosam.
+//  Copyright © 2020 Andreas Grosam.
 //  Licensed under the Apache License, Version 2.0.
 //
-
 
 /// A `Cancelable` is an instance of a class, executing a potentially lengthy
 /// operation or task, or providing a service, all of which can be cancelled.

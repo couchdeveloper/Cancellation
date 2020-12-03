@@ -1,7 +1,4 @@
 //
-//  Cancellation.h
-//  Cancellation
-//
 //  Created by Andreas Grosam on 19.04.18.
 //  Copyright © 2018 Andreas Grosam. All rights reserved.
 //
