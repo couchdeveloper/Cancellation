@@ -1,6 +1,6 @@
 language: swift
 
-xcode_workspace: Cancellation.xcode_workspace
+xcode_workspace: Cancellation.xcworkspace
 xcode_scheme: Cancellation
 osx_image: xcode12.2
 
