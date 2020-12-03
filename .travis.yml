@@ -6,8 +6,8 @@ osx_image: xcode12.2
 
 script:
 - set -o pipefail
-- xcrun xcodebuild test -workspace Cancellation.workspace -scheme Cancellation -destination 'arch=x86_64' | xcpretty
-- xcrun xcodebuild test -workspace Cancellation.workspace -scheme Cancellation -destination 'platform=iOS Simulator,name=iPhone X' | xcpretty
-- xcrun xcodebuild test -workspace Cancellation.workspace -scheme Cancellation -destination 'platform=iOS Simulator,name=iPhone 5,OS=9.3' | xcpretty
-- xcrun xcodebuild test -workspace Cancellation.workspace -scheme Cancellation -destination 'platform=tvOS Simulator,name=Apple TV' | xcpretty
-- xcrun xcodebuild build -workspace Cancellation.workspace -scheme Cancellation -destination 'platform=watchOS Simulator,name=Apple Watch - 38mm' | xcpretty
+- xcrun xcodebuild test -workspace Cancellation.xcworkspace -scheme Cancellation -destination 'arch=x86_64' | xcpretty
+- xcrun xcodebuild test -workspace Cancellation.xcworkspace -scheme Cancellation -destination 'platform=iOS Simulator,name=iPhone X' | xcpretty
+- xcrun xcodebuild test -workspace Cancellation.xcworkspace -scheme Cancellation -destination 'platform=iOS Simulator,name=iPhone 5,OS=9.3' | xcpretty
+- xcrun xcodebuild test -workspace Cancellation.xcworkspace -scheme Cancellation -destination 'platform=tvOS Simulator,name=Apple TV' | xcpretty
+- xcrun xcodebuild build -workspace Cancellation.xcworkspace -scheme Cancellation -destination 'platform=watchOS Simulator,name=Apple Watch - 38mm' | xcpretty
