@@ -50,7 +50,6 @@ internal final class CancellationToken: CancellationTokenType {
         //  - `self` has registered at least one handler.
     }
 
-
     /// Returns `true` if `self`'s associated `CancellationRequest` has requested
     /// a cancellation. Otherwise, it returns `false`.
     final var isCancelled: Bool {

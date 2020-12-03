@@ -11,9 +11,7 @@
 ///   - left: A Cancellation Token as the left operand.
 ///   - right: A Cancellation Token as the right operand.
 /// - Returns: A new cancellation token.
-public func || (left: CancellationTokenType, right: CancellationTokenType)
-    -> CancellationTokenType 
-{
+public func || (left: CancellationTokenType, right: CancellationTokenType) -> CancellationTokenType {
     let returnedToken = CancellationToken()
     left.onCancel {
         returnedToken.complete(cancel: true)
@@ -32,9 +30,7 @@ public func || (left: CancellationTokenType, right: CancellationTokenType)
 ///   - left: A Cancellation Token as the left operand.
 ///   - right: A Cancellation Token as the right operand.
 /// - Returns: A new cancellation token.
-public func && (left: CancellationTokenType, right: CancellationTokenType)
-    -> CancellationTokenType 
-{
+public func && (left: CancellationTokenType, right: CancellationTokenType) -> CancellationTokenType {
     return left.flatMap {
         right.map {true}
     }

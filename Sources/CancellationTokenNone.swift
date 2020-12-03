@@ -36,7 +36,6 @@ public struct CancellationTokenNone: CancellationTokenType {
 
     public func flatMap(f: @escaping () -> (CancellationTokenType)) -> CancellationTokenNone { return CancellationTokenNone() }
 
-
     /// A NoOp function.
     ///
     /// - parameter queue:      unused

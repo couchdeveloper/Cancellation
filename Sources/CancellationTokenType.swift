@@ -78,7 +78,6 @@ public protocol CancellationTokenType {
 
 }
 
-
 extension CancellationTokenType {
 
     /// Register a closure which will be called when `self` has been completed with
