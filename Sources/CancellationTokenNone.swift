@@ -27,7 +27,7 @@ public struct CancellationTokenNone: CancellationTokenType {
     /// - parameter f: The closure which defines the event handler to be executed
     /// when `self` is completed.
     public func onComplete(f: @escaping (Bool) -> ()) {
-        DispatchQueue.global().async {
+        cancellationQueue.async {
             f(false)
         }
     }

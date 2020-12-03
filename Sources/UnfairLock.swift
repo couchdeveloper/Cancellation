@@ -9,7 +9,9 @@ import Foundation
 ///
 /// - Warning: This lock must be unlocked from the same thread that locked it. Attempts to unlock from
 /// a different thread will cause an assertion aborting the process.
-final class UnfairLock {
+@available(iOS 10.0, *)
+@available(OSX 10.12, *)
+final class UnfairLock: Mutex {
     private var _lock: UnsafeMutablePointer<os_unfair_lock>
 
     init() {

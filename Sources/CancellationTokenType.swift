@@ -103,7 +103,7 @@ extension CancellationTokenType {
     /// cancelable should be submitted.
     /// - parameter cancelable: The value whose underlying task should be cancelled.
     public func register(cancelable: Cancelable) {
-        register(cancelable: cancelable, queue: DispatchQueue.global())
+        register(cancelable: cancelable, queue: cancellationQueue)
     }
 
     /// Registers a `Cancelable` whose function `cancel()` will be called on the

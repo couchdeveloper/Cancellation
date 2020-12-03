@@ -5,7 +5,7 @@
 
 import Foundation
 
-final class Mutex {
+final class UnsafeMutex: Mutex {
     private var unsafeMutex: pthread_mutex_t = pthread_mutex_t()
 
     init() {

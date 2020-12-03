@@ -5,16 +5,28 @@
 
 import Dispatch
 
+protocol Mutex {
+    func lock()
+    func unlock()
+}
 
-fileprivate var sharedMutex = Mutex()
+fileprivate var sharedMutex: Mutex = {
+    if #available(iOS 10.0, *), #available(OSX 10.12, *) {
+        return UnfairLock()
+    } else {
+        return UnsafeMutex()
+    }
+}()
+
+let cancellationQueue = DispatchQueue(label: "cancel-queue")
 
 /// The CancelationToken is passed from the client to a task when it creates the task
 /// to let it know when the client has requested a cancellation.
 internal final class CancellationToken: CancellationTokenType {
 
     private enum State {
-        init(targetQueue: DispatchQueue) {
-            let handlerQueue = DispatchQueue(label: "handler-queue", target: targetQueue)
+        init() {
+            let handlerQueue = DispatchQueue(label: "handler-queue", target: cancellationQueue)
             handlerQueue.suspend()
             self = .pending(handlerQueue)
         }
@@ -26,7 +38,7 @@ internal final class CancellationToken: CancellationTokenType {
 
 
     internal init() {
-        self.state = State(targetQueue: DispatchQueue.global())
+        self.state = State()
     }
 
     deinit {
@@ -53,7 +65,6 @@ internal final class CancellationToken: CancellationTokenType {
         }
     }
 
-    
     /// Returns `true` if `self` has been completed. A token will be completed when
     /// a client requests a cancellation via its cancellatoion request, when the
     /// cancellation request deallocates or when the cancellation token is inherently
@@ -63,13 +74,12 @@ internal final class CancellationToken: CancellationTokenType {
             sharedMutex.unlock()
         }
         sharedMutex.lock()
-        if case .completed = self.state  {
+        if case .completed = self.state {
             return true
         } else {
             return false
         }
     }
-
 
     /// Register a closure which will be called when `self` has been completed with
     /// its argument set to the current value of the completion state (either `true`
@@ -92,12 +102,11 @@ internal final class CancellationToken: CancellationTokenType {
             }
         case .completed(let cancelled):
             sharedMutex.unlock()
-            DispatchQueue.global().async {
+            cancellationQueue.async {
                 f(cancelled)
             }
         }
     }
-
 
     /// Returns a new Cancellation Token which will be completed with the return
     /// value of the function `f` when `self` has been cancelled. If `self` has 
@@ -113,7 +122,6 @@ internal final class CancellationToken: CancellationTokenType {
         }
         return returnedToken
     }
-
 
     /// Returns a new Cancellation Token which will be completed with the returned 
     /// _deferred_ cancellation state of the function `f` when `self` has been cancelled.
@@ -133,8 +141,6 @@ internal final class CancellationToken: CancellationTokenType {
         }
         return returnedToken
     }
-
-
 
     internal final func complete(cancel: Bool) {
         sharedMutex.lock()
